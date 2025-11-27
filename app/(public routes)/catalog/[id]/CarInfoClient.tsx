@@ -7,6 +7,9 @@ import mainCss from '@/app/Home.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { useCarStore } from '@/lib/store/carStore';
 
 type CarInfoClientProps = {
   car: Car;
@@ -15,7 +18,7 @@ type CarInfoClientProps = {
 type RentalFormValues = {
   name: string;
   email: string;
-  bookingDate: string;
+  bookingDate: Date | null;
   comment: string;
 };
 
@@ -27,11 +30,18 @@ const rentalFormSchema = Yup.object().shape({
   email: Yup.string()
     .email('Invalid email address')
     .required('Email is required'),
-  bookingDate: Yup.string().required('Booking date is required'),
+  bookingDate: Yup.date()
+    .nullable()
+    .required('Booking date is required')
+    .min(new Date(), 'Booking date must be in the future'),
   comment: Yup.string().max(500, 'Comment cannot exceed 500 characters'),
 });
 
 const CarInfoClient = ({ car }: CarInfoClientProps) => {
+  const favorites = useCarStore(state => state.favorites);
+  const addToFavorites = useCarStore(state => state.addToFavorites);
+  const removeFromFavorites = useCarStore(state => state.removeFromFavorites);
+
   const formatMileage = (mileage: number): string => {
     return mileage.toLocaleString('uk-UA').replace(/,/g, ' ');
   };
@@ -59,6 +69,14 @@ const CarInfoClient = ({ car }: CarInfoClientProps) => {
 
   const rentalConditions = formatRentalConditions(car.rentalConditions);
 
+  const onClickfavorite = () => {
+    if (favorites.some(favCar => favCar.id === car.id)) {
+      removeFromFavorites(car.id);
+    } else {
+      addToFavorites(car);
+    }
+  };
+
   return (
     <div className={css.wrapper}>
       <div className={mainCss.container}>
@@ -73,6 +91,18 @@ const CarInfoClient = ({ car }: CarInfoClientProps) => {
                 className={css.carImage}
                 priority
               />
+              <button
+                type="button"
+                className={css.favoriteButton}
+                onClick={onClickfavorite}
+                aria-label="Add to favorites"
+              >
+                <svg className={css.favoriteIcon}>
+                  <use
+                    href={`/sprite.svg#${favorites.some(favCar => favCar.id === car.id) ? 'icon-heart-favorite' : 'icon-heart'}`}
+                  />
+                </svg>
+              </button>
             </div>
 
             <div className={css.formSection}>
@@ -84,13 +114,13 @@ const CarInfoClient = ({ car }: CarInfoClientProps) => {
                 initialValues={{
                   name: '',
                   email: '',
-                  bookingDate: '',
+                  bookingDate: null,
                   comment: '',
                 }}
                 validationSchema={rentalFormSchema}
                 onSubmit={handleSubmit}
               >
-                {({ isSubmitting, errors, touched }) => (
+                {({ isSubmitting, errors, touched, setFieldValue, values }) => (
                   <Form className={css.rentalForm}>
                     <div className={css.formGroup}>
                       <Field
@@ -121,10 +151,12 @@ const CarInfoClient = ({ car }: CarInfoClientProps) => {
                     </div>
 
                     <div className={css.formGroup}>
-                      <Field
-                        type="text"
-                        name="bookingDate"
-                        placeholder="Booking date*"
+                      <DatePicker
+                        selected={values.bookingDate}
+                        onChange={date => setFieldValue('bookingDate', date)}
+                        placeholderText="Booking date*"
+                        dateFormat="dd/MM/yyyy"
+                        minDate={new Date()}
                         className={`${css.formInput} ${errors.bookingDate && touched.bookingDate ? css.inputError : ''}`}
                       />
                       <ErrorMessage
@@ -164,8 +196,8 @@ const CarInfoClient = ({ car }: CarInfoClientProps) => {
 
           <div className={css.rightColumn}>
             <h1 className={css.carTitle}>
-              {car.brand} <span className={css.carModel}>{car.model}</span>,{' '}
-              {car.year}
+              {car.brand}&nbsp;{' '}
+              <span className={css.carModel}>{car.model}</span>, {car.year}
               <span className={css.carId}>Id: {car.id}</span>
             </h1>
 
@@ -191,67 +223,11 @@ const CarInfoClient = ({ car }: CarInfoClientProps) => {
 
             <p className={css.description}>{car.description}</p>
 
-            <h2 className={css.specsTitle}>Car Specifications:</h2>
-            <div className={css.carDetailsList}>
-              <div className={css.detailRow}>
-                <svg className={css.specIcon}>
-                  <use href="/sprite.svg#icon-gear" />
-                </svg>
-                <span className={css.detailItem}>Year: {car.year}</span>
-              </div>
-              <div className={css.detailRow}>
-                <svg className={css.specIcon}>
-                  <use href="/sprite.svg#icon-car" />
-                </svg>
-                <span className={css.detailItem}>Type: {car.type}</span>
-              </div>
-              <div className={css.detailRow}>
-                <svg className={css.specIcon}>
-                  <use href="/sprite.svg#icon-fuel-pump" />
-                </svg>
-                <span className={css.detailItem}>
-                  Fuel Consumption: {car.fuelConsumption}
-                </span>
-              </div>
-              <div className={css.detailRow}>
-                <svg className={css.specIcon}>
-                  <use href="/sprite.svg#icon-gear" />
-                </svg>
-                <span className={css.detailItem}>
-                  Engine Size: {car.engineSize}
-                </span>
-              </div>
-            </div>
-
-            <div className={css.specsSection}>
-              <h2 className={css.specsTitle}>
-                Accessories and functionalities:
-              </h2>
-              <div className={css.specsList}>
-                {car.accessories.map((accessory, index) => (
-                  <div key={`acc-${index}`} className={css.specsRow}>
-                    <svg className={css.specIcon}>
-                      <use href="/sprite.svg#icon-check-circle" />
-                    </svg>
-                    <span className={css.specItem}>{accessory}</span>
-                  </div>
-                ))}
-                {car.functionalities.map((functionality, index) => (
-                  <div key={`func-${index}`} className={css.specsRow}>
-                    <svg className={css.specIcon}>
-                      <use href="/sprite.svg#icon-check-circle" />
-                    </svg>
-                    <span className={css.specItem}>{functionality}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
             <div className={css.conditionsSection}>
               <h2 className={css.conditionsTitle}>Rental Conditions:</h2>
-              <div className={css.conditionsList}>
+              <ul className={css.conditionsList}>
                 {rentalConditions.map((condition, index) => (
-                  <div key={index} className={css.conditionItem}>
+                  <li key={index} className={css.conditionItem}>
                     <svg className={css.conditionIcon}>
                       <use href="/sprite.svg#icon-check-circle" />
                     </svg>
@@ -266,9 +242,65 @@ const CarInfoClient = ({ car }: CarInfoClientProps) => {
                         </>
                       )}
                     </span>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
+            </div>
+
+            <h2 className={css.specsTitle}>Car Specifications:</h2>
+            <ul className={css.carDetailsList}>
+              <li className={css.detailRow}>
+                <svg className={css.specIcon}>
+                  <use href="/sprite.svg#icon-calendar" />
+                </svg>
+                <span className={css.detailItem}>Year: {car.year}</span>
+              </li>
+              <li className={css.detailRow}>
+                <svg className={css.specIcon}>
+                  <use href="/sprite.svg#icon-car" />
+                </svg>
+                <span className={css.detailItem}>Type: {car.type}</span>
+              </li>
+              <li className={css.detailRow}>
+                <svg className={css.specIcon}>
+                  <use href="/sprite.svg#icon-fuel-pump" />
+                </svg>
+                <span className={css.detailItem}>
+                  Fuel Consumption: {car.fuelConsumption}
+                </span>
+              </li>
+              <li className={css.detailRow}>
+                <svg className={css.specIcon}>
+                  <use href="/sprite.svg#icon-gear" />
+                </svg>
+                <span className={css.detailItem}>
+                  Engine Size: {car.engineSize}
+                </span>
+              </li>
+            </ul>
+
+            <div className={css.specsSection}>
+              <h2 className={css.specsTitle}>
+                Accessories and functionalities:
+              </h2>
+              <ul className={css.specsList}>
+                {car.accessories.map((accessory, index) => (
+                  <li key={`acc-${index}`} className={css.specsRow}>
+                    <svg className={css.specIcon}>
+                      <use href="/sprite.svg#icon-check-circle" />
+                    </svg>
+                    <span className={css.specItem}>{accessory}</span>
+                  </li>
+                ))}
+                {car.functionalities.map((functionality, index) => (
+                  <li key={`func-${index}`} className={css.specsRow}>
+                    <svg className={css.specIcon}>
+                      <use href="/sprite.svg#icon-check-circle" />
+                    </svg>
+                    <span className={css.specItem}>{functionality}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>

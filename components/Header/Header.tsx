@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import css from './Header.module.css';
 import mainCss from '@/app/Home.module.css';
+import path from 'path';
 
 const Header = () => {
   const pathname = usePathname();
@@ -35,7 +36,7 @@ const Header = () => {
               <li>
                 <Link
                   href="/catalog"
-                  className={`${css.listNavItem} ${pathname.startsWith('/catalog') ? css.active : ''}`}
+                  className={`${css.listNavItem} ${pathname.startsWith('/catalog') && pathname.endsWith('/catalog') ? css.active : ''}`}
                 >
                   Catalog
                 </Link>

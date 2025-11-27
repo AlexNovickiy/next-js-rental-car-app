@@ -40,7 +40,7 @@
 
   .dropdown {
     flex: 1;
-    min-width: 200px;
+    max-width: 204px;
   }
 
   .dropdownToggle {
@@ -186,7 +186,6 @@
   display: flex;
   align-items: center;
   padding: 12px 24px;
-  width: 160px;
 }
 
 .mileageInputWrapper:first-child {

@@ -1,5 +1,5 @@
 .wrapper {
-  padding: 84px 0 124px 0;
+  padding: 84px 0 104px 0;
 }
 
 .content {
@@ -11,27 +11,47 @@
 .leftColumn {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 40px;
 }
 
 .rightColumn {
   display: flex;
   flex-direction: column;
-  gap: 24px;
 }
 
 /* Image Section */
 .imageSection {
   width: 100%;
-  border-radius: 14px;
+  border-radius: 19px;
   overflow: hidden;
+  position: relative;
 }
 
 .carImage {
   width: 640px;
   height: 512px;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: 19px;
+}
+
+.favoriteButton {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.favoriteIcon {
+  width: 25px;
+  height: 25px;
 }
 
 /* Info Section */
@@ -47,9 +67,10 @@
   line-height: 1.33;
   color: var(--main);
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 8px;
+  margin-bottom: 8px;
+  margin-top: 20px;
 }
 
 .carModel {
@@ -58,14 +79,25 @@
 
 .carId {
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 500;
+  line-height: 1.25;
   color: var(--gray);
+  width: 204px;
+  max-height: 20px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  align-self: end;
+  margin-left: 16px;
+}
+
+.carId::-webkit-scrollbar {
+  display: none;
 }
 
 .carMeta {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  gap: 16px;
   margin-bottom: 16px;
 }
 
@@ -90,7 +122,10 @@
 }
 
 .priceSection {
-  margin-bottom: 16px;
+  margin-bottom: 32px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
 }
 
 .price {
@@ -104,22 +139,27 @@
 .carDetailsList {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  margin-bottom: 110px;
 }
 
 .detailRow {
   display: flex;
   align-items: center;
+  font-weight: 500;
   gap: 8px;
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.25;
   color: var(--gray);
-  margin-bottom: 8px;
+  min-height: 21px;
+}
+
+.detailRow:not(:last-child) {
+  margin-bottom: 16px;
 }
 
 .specIcon {
-  width: 20px;
-  height: 20px;
+  width: 17px;
+  height: 16px;
   flex-shrink: 0;
   fill: var(--main);
 }
@@ -127,6 +167,10 @@
 .detailItem {
   display: inline-flex;
   align-items: center;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--main);
 }
 
 .detailDivider {
@@ -135,45 +179,56 @@
 
 /* Description */
 .description {
-  font-size: 14px;
-  line-height: 1.43;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
   color: var(--main);
+  margin-bottom: 68px;
+  max-height: 40px;
+  overflow-x: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.description::-webkit-scrollbar {
+  display: none;
 }
 
 /* Specs Section */
 .specsSection {
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 .specsTitle {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.43;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
   color: var(--main);
-  margin-bottom: 8px;
+  margin-bottom: 20px;
 }
 
 .specsList {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 16px;
 }
 
 .specsRow {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
-  line-height: 1.5;
   color: var(--gray);
-  margin-bottom: 8px;
 }
 
 .specItem {
   display: inline-flex;
   align-items: center;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--main);
+  font-size: 16px;
 }
 
 .specDivider {
@@ -185,21 +240,21 @@
 .conditionsSection {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  margin-bottom: 110px;
 }
 
 .conditionsTitle {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.43;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
   color: var(--main);
-  margin-bottom: 8px;
+  margin-bottom: 20px;
 }
 
 .conditionsList {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .conditionItem {
@@ -212,19 +267,17 @@
 }
 
 .conditionIcon {
-  width: 20px;
-  height: 20px;
+  width: 17px;
+  height: 16px;
   flex-shrink: 0;
   fill: var(--main);
 }
 
 .conditionText {
   color: var(--main);
-}
-
-.conditionValue {
-  color: var(--button);
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
 }
 
 /* Rental Button */
@@ -256,10 +309,10 @@
 .formSection {
   display: flex;
   flex-direction: column;
-  gap: 16px;
   padding: 24px;
-  background-color: var(--badges);
-  border-radius: 14px;
+  background-color: var(--white);
+  border-radius: 19px;
+  border: 1px solid #dadde1;
 }
 
 .formTitle {
@@ -267,40 +320,42 @@
   font-weight: 600;
   line-height: 1.33;
   color: var(--main);
-  margin: 0;
+  margin-bottom: 8px;
 }
 
 .formSubtitle {
   font-size: 14px;
   line-height: 1.43;
   color: var(--gray);
-  margin: 0 0 8px 0;
+  margin: 0 0 24px 0;
 }
 
 /* Form Styles */
 .rentalForm {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
 .formGroup {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin-bottom: 16px;
 }
 
 .formInput {
   width: 100%;
-  padding: 16px 18px;
+  display: block;
+  padding: 14px 20px;
   border: none;
   border-radius: 12px;
   background-color: var(--inputs);
   font-size: 16px;
-  line-height: 1.5;
   color: var(--main);
   outline: none;
   transition: all 0.2s ease;
+  font-weight: 500;
+  line-height: 1.25;
 }
 
 .formInput::placeholder {
@@ -317,9 +372,78 @@
   background-color: var(--white);
 }
 
+/* React DatePicker Styles */
+.formGroup :global(.react-datepicker-wrapper) {
+  width: 100%;
+}
+
+.formGroup :global(.react-datepicker__input-container) {
+  width: 100%;
+}
+
+.formGroup :global(.react-datepicker) {
+  font-family: inherit;
+  border: 1px solid #dadde1;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.formGroup :global(.react-datepicker__header) {
+  background-color: var(--button);
+  border-bottom: none;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  padding-top: 12px;
+}
+
+.formGroup :global(.react-datepicker__current-month),
+.formGroup :global(.react-datepicker__day-name) {
+  color: var(--white);
+  font-weight: 500;
+}
+
+.formGroup :global(.react-datepicker__day) {
+  color: var(--main);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.formGroup :global(.react-datepicker__day:hover) {
+  background-color: var(--inputs);
+  color: var(--main);
+}
+
+.formGroup :global(.react-datepicker__day--selected),
+.formGroup :global(.react-datepicker__day--keyboard-selected) {
+  background-color: var(--button);
+  color: var(--white);
+  font-weight: 600;
+}
+
+.formGroup :global(.react-datepicker__day--disabled) {
+  color: var(--gray-light);
+  cursor: not-allowed;
+}
+
+.formGroup :global(.react-datepicker__day--disabled:hover) {
+  background-color: transparent;
+}
+
+.formGroup :global(.react-datepicker__navigation) {
+  top: 12px;
+}
+
+.formGroup :global(.react-datepicker__navigation-icon::before) {
+  border-color: var(--white);
+}
+
+.formGroup :global(.react-datepicker__navigation:hover *::before) {
+  border-color: var(--white);
+}
+
 .formTextarea {
-  resize: vertical;
-  min-height: 100px;
+  resize: none;
+  max-height: 88px;
   font-family: inherit;
 }
 
@@ -332,17 +456,18 @@
 
 .submitButton {
   width: 100%;
+  max-width: 156px;
   padding: 12px 0;
   border-radius: 12px;
   background-color: var(--button);
   color: var(--white);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
-  line-height: 1.43;
+  line-height: 1.25;
   text-align: center;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+  margin: 0 auto;
   margin-top: 8px;
+  transition: background-color 0.2s ease;
 }
 
 .submitButton:hover:not(:disabled) {
@@ -368,20 +493,12 @@
     font-size: 20px;
   }
 
-  .carDetailsList {
-    gap: 8px;
-  }
-
-  .detailRow {
-    font-size: 14px;
-  }
-
   .description {
     font-size: 16px;
   }
 
   .specsTitle {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .specsRow {
@@ -389,12 +506,11 @@
   }
 
   .conditionsTitle {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .conditionItem {
     font-size: 14px;
-    padding: 8px 16px;
   }
 
   .rentalButton {
@@ -420,7 +536,7 @@
 @media screen and (min-width: 1440px) {
   .content {
     flex-direction: row;
-    gap: 40px;
+    gap: 72px;
     align-items: flex-start;
   }
 
@@ -431,7 +547,6 @@
 
   .rightColumn {
     flex: 1;
-    gap: 32px;
   }
 
   .imageSection {
@@ -448,16 +563,13 @@
     line-height: 1.25;
   }
 
-  .description {
-    font-size: 18px;
-    line-height: 1.5;
-  }
-
   .formSection {
-    padding: 40px;
+    padding: 32px;
   }
 
   .formTitle {
-    font-size: 24px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.2;
   }
 }

@@ -61,7 +61,9 @@ const CatalogClient = () => {
             fetchNextPage={fetchNextPage}
             cars={cars}
           />
-          {isError && <ErrorMessage errorMessage={error.message} />}
+          {isError && !isFetchingNextPage && (
+            <ErrorMessage errorMessage={error.message} />
+          )}
         </div>
       </div>
     </div>

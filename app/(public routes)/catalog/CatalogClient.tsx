@@ -26,29 +26,35 @@ const CatalogClient = () => {
     refetchOnMount: false,
   });
 
-  const { fetchNextPage, isFetchingNextPage, hasNextPage, isError, error } =
-    useInfiniteQuery({
-      queryKey: ['cars', filters],
-      queryFn: async ({ pageParam = 1 }) => {
-        const data = await fetchCars({
-          ...filters,
-          page: (pageParam as number).toString(),
-        });
+  const {
+    fetchNextPage,
+    isFetchingNextPage,
+    hasNextPage,
+    isError,
+    isFetching,
+    error,
+  } = useInfiniteQuery({
+    queryKey: ['cars', filters],
+    queryFn: async ({ pageParam = 1 }) => {
+      const data = await fetchCars({
+        ...filters,
+        page: (pageParam as number).toString(),
+      });
 
-        if (pageParam === 1) {
-          removeCars();
-        }
-        addCars(data.cars);
-        return data;
-      },
-      getNextPageParam: lastPage =>
-        lastPage.totalPages > lastPage.page
-          ? Number(lastPage.page) + 1
-          : undefined,
-      initialPageParam: 1,
-      refetchOnMount: false,
-      placeholderData: keepPreviousData,
-    });
+      if (pageParam === 1) {
+        removeCars();
+      }
+      addCars(data.cars);
+      return data;
+    },
+    getNextPageParam: lastPage =>
+      lastPage.totalPages > lastPage.page
+        ? Number(lastPage.page) + 1
+        : undefined,
+    initialPageParam: 1,
+    refetchOnMount: false,
+    placeholderData: keepPreviousData,
+  });
 
   return (
     <div className={css.catalogWrapper}>
@@ -61,7 +67,7 @@ const CatalogClient = () => {
             fetchNextPage={fetchNextPage}
             cars={cars}
           />
-          {isError && !isFetchingNextPage && (
+          {isError && !isFetching && (
             <ErrorMessage errorMessage={error.message} />
           )}
         </div>

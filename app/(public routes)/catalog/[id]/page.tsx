@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: CarInfoPageProps) {
     openGraph: {
       title: 'Rental Car App',
       description: 'A platform for renting cars with ease and convenience',
-      url: 'https://localhost:3000',
+      url: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000',
       images: [
         {
           url: '/home/home-picture.webp',

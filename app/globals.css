@@ -21,6 +21,8 @@ body {
   line-height: 1.5;
   background-color: var(--white);
   color: var(--main);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 h1,

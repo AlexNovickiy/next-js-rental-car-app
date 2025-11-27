@@ -28,7 +28,7 @@
 }
 
 .carImage {
-  width: 640px;
+  width: 704px;
   height: 512px;
   object-fit: cover;
   border-radius: 19px;
@@ -89,6 +89,12 @@
   scrollbar-width: none;
   align-self: end;
   margin-left: 16px;
+}
+
+@media screen and (max-width: 767px) {
+  .carId {
+    width: 150px;
+  }
 }
 
 .carId::-webkit-scrollbar {

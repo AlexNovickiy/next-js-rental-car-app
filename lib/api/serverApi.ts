@@ -1,7 +1,6 @@
 import { Car, CarsResponse } from '@/types/car';
 import nextServer from './nextServer';
 import { CarsParams } from './clientApi';
-import next from 'next';
 
 export const fetchServerCars = async (
   params?: CarsParams

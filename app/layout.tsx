@@ -8,6 +8,9 @@ import css from '@/app/Home.module.css';
 import Header from '@/components/Header/Header';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+  ),
   title: 'Rental Car App',
   description: 'A platform for renting cars with ease and convenience',
   icons: {

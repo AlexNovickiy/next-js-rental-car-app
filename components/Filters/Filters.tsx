@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import css from './Filters.module.css';
 import { useCarStore } from '@/lib/store/carStore';
 
@@ -12,10 +12,48 @@ const Filters = ({ brands }: FiltersProps) => {
   const filters = useCarStore(state => state.filters);
   const editFilters = useCarStore(state => state.editFilters);
   const [newFilters, setNewFilters] = useState({ ...filters });
+  const dropdownRefBrand = useRef<HTMLDivElement>(null);
+  const dropdownRefPrice = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setNewFilters({ ...filters });
   }, [filters]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
+
+      if (
+        dropdownRefBrand.current &&
+        !dropdownRefBrand.current.contains(target) &&
+        isOpenBrand
+      ) {
+        setIsOpenBrand(false);
+      }
+      if (
+        dropdownRefPrice.current &&
+        !dropdownRefPrice.current.contains(target) &&
+        isOpenPrice
+      ) {
+        setIsOpenPrice(false);
+      }
+    };
+
+    const timeoutId = setTimeout(() => {
+      document.addEventListener('click', handleClickOutside);
+    }, 0);
+
+    return () => {
+      clearTimeout(timeoutId);
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isOpenBrand, isOpenPrice]);
+
+  const onSubmitFiltersClick = () => {
+    editFilters(newFilters);
+    if (isOpenBrand) setIsOpenBrand(false);
+    if (isOpenPrice) setIsOpenPrice(false);
+  };
 
   const formatNumber = (value: string) => {
     const num = value.replace(/\D/g, '');
@@ -32,18 +70,18 @@ const Filters = ({ brands }: FiltersProps) => {
 
   const onClickDropdown = (field: 'brand' | 'rentalPrice', value: string) => {
     if (field === 'brand') {
-      setIsOpenBrand(!isOpenBrand);
       setNewFilters({ ...newFilters, brand: value });
+      setIsOpenBrand(false);
     } else if (field === 'rentalPrice') {
-      setIsOpenPrice(!isOpenPrice);
       setNewFilters({ ...newFilters, rentalPrice: value });
+      setIsOpenPrice(false);
     }
   };
 
   return (
     <div className={css.filtersWrapper}>
       <div className={css.filters}>
-        <div className={css.dropdown}>
+        <div className={css.dropdown} ref={dropdownRefBrand}>
           <p className={css.dropdownLabel}>Car brand</p>
           <button
             className={css.dropdownToggle}
@@ -77,7 +115,7 @@ const Filters = ({ brands }: FiltersProps) => {
             </ul>
           )}
         </div>
-        <div className={css.dropdown}>
+        <div className={css.dropdown} ref={dropdownRefPrice}>
           <p className={css.dropdownLabel}>Price/ 1 hour</p>
           <button
             className={css.dropdownToggle}
@@ -152,10 +190,7 @@ const Filters = ({ brands }: FiltersProps) => {
             </div>
           </div>
         </div>
-        <button
-          className={css.searchButton}
-          onClick={() => editFilters(newFilters)}
-        >
+        <button className={css.searchButton} onClick={onSubmitFiltersClick}>
           Search
         </button>
       </div>

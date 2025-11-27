@@ -1,0 +1,232 @@
+/* Mobile styles */
+@media screen and (min-width: 375px) {
+  .filtersWrapper {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .filters {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .dropdownToggle {
+    width: 100%;
+  }
+
+  .mileageInputWrapper {
+    width: 50%;
+  }
+
+  .searchButton {
+    max-width: 100%;
+  }
+}
+
+/* Tablet styles */
+@media screen and (min-width: 768px) {
+  .filtersWrapper {
+    max-width: 768px;
+    margin: 0 auto;
+  }
+
+  .filters {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .dropdown {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .dropdownToggle {
+    width: 100%;
+  }
+
+  .mileage {
+    flex: 1;
+    min-width: 280px;
+  }
+
+  .searchButton {
+    max-width: 156px;
+  }
+}
+
+/* Desktop styles */
+@media screen and (min-width: 1440px) {
+  .filtersWrapper {
+    max-width: 924px;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .filters {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 16px;
+  }
+
+  .dropdownToggle {
+    width: 204px;
+  }
+
+  .mileageInputWrapper {
+    width: 160px;
+  }
+
+  .searchButton {
+    max-width: 156px;
+  }
+}
+
+.dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dropdownLabel {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.33;
+  color: var(--gray);
+}
+
+.dropdownToggle {
+  border-radius: 12px;
+  padding: 12px 16px;
+  width: 204px;
+  border: none;
+  background-color: var(--inputs);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--main);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+
+.dropdownToggle:hover {
+  background-color: #ebebf0;
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s;
+}
+
+.dropdownMenu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  max-height: 272px;
+  overflow-y: auto;
+  background-color: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: 12px;
+  box-shadow: 0 4px 36px 0 rgba(0, 0, 0, 0.02);
+  z-index: 10;
+  padding: 14px 8px 14px 18px;
+  scrollbar-width: 8px;
+  scrollbar-color: #dadde1 transparent;
+}
+
+.dropdownItem {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--gray);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.dropdownItem:hover {
+  color: var(--main);
+}
+
+.mileage {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mileageLabel {
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--gray);
+  line-height: 1.33;
+}
+
+.mileageInputs {
+  display: flex;
+  gap: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--inputs);
+}
+
+.mileageInputWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+  width: 160px;
+}
+
+.mileageInputWrapper:first-child {
+  border-right: 1px solid var(--gray-light);
+}
+
+.mileagePrefix {
+  font-size: 16px;
+  color: var(--main);
+  white-space: nowrap;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.mileageInput {
+  flex: 1;
+  border: none;
+  font-size: 16px;
+  color: var(--main);
+  outline: none;
+  padding: 0;
+  min-width: 0;
+  background: transparent;
+}
+
+.searchButton {
+  padding: 12px 0;
+  background-color: #3470ff;
+  width: 100%;
+  max-width: 156px;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  transition: background-color 0.2s;
+  align-self: flex-end;
+}
+
+.searchButton:hover {
+  background-color: #0b44cd;
+}

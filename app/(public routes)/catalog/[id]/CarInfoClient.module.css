@@ -1,0 +1,463 @@
+.wrapper {
+  padding: 84px 0 124px 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Image Section */
+.imageSection {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.carImage {
+  width: 640px;
+  height: 512px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* Info Section */
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.carTitle {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.33;
+  color: var(--main);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.carModel {
+  color: var(--button);
+}
+
+.carId {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--gray);
+}
+
+.carMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--gray);
+}
+
+.metaIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  fill: var(--gray);
+}
+
+.metaText {
+  color: var(--gray);
+}
+
+.priceSection {
+  margin-bottom: 16px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--button);
+}
+
+/* Car Details */
+.carDetailsList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detailRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+
+.specIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  fill: var(--main);
+}
+
+.detailItem {
+  display: inline-flex;
+  align-items: center;
+}
+
+.detailDivider {
+  color: var(--gray-light);
+}
+
+/* Description */
+.description {
+  font-size: 14px;
+  line-height: 1.43;
+  color: var(--main);
+}
+
+/* Specs Section */
+.specsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.specsTitle {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.43;
+  color: var(--main);
+  margin-bottom: 8px;
+}
+
+.specsList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.specsRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+
+.specItem {
+  display: inline-flex;
+  align-items: center;
+}
+
+.specDivider {
+  color: var(--gray-light);
+  margin-left: 6px;
+}
+
+/* Conditions Section */
+.conditionsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.conditionsTitle {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.43;
+  color: var(--main);
+  margin-bottom: 8px;
+}
+
+.conditionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.conditionItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--main);
+}
+
+.conditionIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  fill: var(--main);
+}
+
+.conditionText {
+  color: var(--main);
+}
+
+.conditionValue {
+  color: var(--button);
+  font-weight: 600;
+}
+
+/* Rental Button */
+.rentalButton {
+  display: block;
+  width: 100%;
+  max-width: 168px;
+  padding: 12px 50px;
+  border-radius: 12px;
+  background-color: var(--button);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.43;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.rentalButton:hover {
+  background-color: var(--button-hover);
+}
+
+.rentalButton:active {
+  transform: scale(0.98);
+}
+
+/* Form Section */
+.formSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background-color: var(--badges);
+  border-radius: 14px;
+}
+
+.formTitle {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.33;
+  color: var(--main);
+  margin: 0;
+}
+
+.formSubtitle {
+  font-size: 14px;
+  line-height: 1.43;
+  color: var(--gray);
+  margin: 0 0 8px 0;
+}
+
+/* Form Styles */
+.rentalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formInput {
+  width: 100%;
+  padding: 16px 18px;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--inputs);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--main);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.formInput::placeholder {
+  color: var(--gray);
+}
+
+.formInput:focus {
+  background-color: var(--white);
+  box-shadow: 0 0 0 2px var(--button);
+}
+
+.formInput.inputError {
+  border: 1px solid #ef5050;
+  background-color: var(--white);
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+
+.errorMessage {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #ef5050;
+  padding-left: 4px;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 12px;
+  background-color: var(--button);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.43;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 8px;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: var(--button-hover);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Tablet styles */
+@media screen and (min-width: 768px) {
+  .wrapper {
+    padding: 100px 0 150px 0;
+  }
+
+  .content {
+    gap: 32px;
+  }
+
+  .carTitle {
+    font-size: 20px;
+  }
+
+  .carDetailsList {
+    gap: 8px;
+  }
+
+  .detailRow {
+    font-size: 14px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .specsTitle {
+    font-size: 16px;
+  }
+
+  .specsRow {
+    font-size: 14px;
+  }
+
+  .conditionsTitle {
+    font-size: 16px;
+  }
+
+  .conditionItem {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .rentalButton {
+    max-width: 200px;
+    padding: 12px 60px;
+    font-size: 16px;
+  }
+
+  .formSection {
+    padding: 32px;
+  }
+
+  .formTitle {
+    font-size: 20px;
+  }
+
+  .formSubtitle {
+    font-size: 16px;
+  }
+}
+
+/* Desktop styles */
+@media screen and (min-width: 1440px) {
+  .content {
+    flex-direction: row;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  .leftColumn {
+    width: 640px;
+    flex-shrink: 0;
+  }
+
+  .rightColumn {
+    flex: 1;
+    gap: 32px;
+  }
+
+  .imageSection {
+    width: 640px;
+  }
+
+  .carImage {
+    width: 640px;
+    height: 512px;
+  }
+
+  .carTitle {
+    font-size: 24px;
+    line-height: 1.25;
+  }
+
+  .description {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .formSection {
+    padding: 40px;
+  }
+
+  .formTitle {
+    font-size: 24px;
+  }
+}

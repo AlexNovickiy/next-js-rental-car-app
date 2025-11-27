@@ -1,0 +1,8 @@
+.catalogWrapper {
+  width: 100vw;
+  padding: 84px 0 124px 0;
+}
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+}

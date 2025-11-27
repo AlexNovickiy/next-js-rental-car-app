@@ -1,0 +1,42 @@
+.header {
+  padding: 26px 0;
+}
+
+.wrapperHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  width: 104px;
+}
+
+.logoIcon {
+  width: 100%;
+  height: 18px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.listHeader {
+  display: flex;
+  gap: 32px;
+}
+
+.listNavItem {
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: center;
+  color: var(--main);
+}
+
+.active {
+  color: var(--button-hover);
+}

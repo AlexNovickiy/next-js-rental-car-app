@@ -32,6 +32,7 @@ const CatalogClient = () => {
     hasNextPage,
     isError,
     isFetching,
+    isLoading,
     error,
   } = useInfiniteQuery({
     queryKey: ['cars', filters],
@@ -66,6 +67,7 @@ const CatalogClient = () => {
             isFetchingNextPage={isFetchingNextPage}
             fetchNextPage={fetchNextPage}
             cars={cars}
+            isLoading={isLoading}
           />
           {isError && !isFetching && (
             <ErrorMessage errorMessage={error.message} />

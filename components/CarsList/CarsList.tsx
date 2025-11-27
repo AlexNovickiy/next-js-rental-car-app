@@ -9,6 +9,7 @@ type CarsListProps = {
   fetchNextPage?: () => void;
   isFetchingNextPage?: boolean;
   hasNextPage?: boolean;
+  isLoading?: boolean;
 };
 
 const CarsList = ({
@@ -16,6 +17,7 @@ const CarsList = ({
   fetchNextPage,
   isFetchingNextPage,
   hasNextPage,
+  isLoading,
 }: CarsListProps) => {
   const removeFilters = useCarStore(state => state.removeFilters);
 
@@ -26,11 +28,9 @@ const CarsList = ({
   return (
     <>
       <ul className={css.carsList}>
-        {cars.length > 0 ? (
-          cars.map(car => <CarsItem key={car.id} car={car} />)
-        ) : (
-          <MessageNoCars onClick={handleNoCars} />
-        )}
+        {cars.length > 0
+          ? cars.map(car => <CarsItem key={car.id} car={car} />)
+          : !isLoading && <MessageNoCars onClick={handleNoCars} />}
       </ul>
       {fetchNextPage && hasNextPage && (
         <button

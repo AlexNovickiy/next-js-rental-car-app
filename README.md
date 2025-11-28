@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# next-js-rental-car-app
 
-## Getting Started
+Короткий опис
+------------
+next-js-rental-car-app — це веб-застосунок для оренди автомобілів, побудований на Next.js. Додаток дозволяє переглядати доступні автомобілі, фільтрувати їх за параметрами, переглядати деталі автомобіля та оформлювати бронювання.
 
-First, run the development server:
+Основні можливості
+------------------
+- Перегляд каталогу доступних автомобілів
+- Фільтрація та пошук (марка, модель, ціна, тип кузова, місце розташування)
+- Сторінка детальної інформації про автомобіль (фото, технічні характеристики, ціни)
+- Оформлення бронювання з перевіркою доступності
+- Адаптивний інтерфейс для мобільних та десктоп пристроїв
+- Підтримка підключення зовнішнього API або внутрішньої бази даних для управління флотом
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Технології
+----------
+- Next.js
+- React
+- Залежності для стилізації (CSS Modules)
+- API-шари
+
+Встановлення
+------------
+1. Клонуйте репозиторій
+   ```bash
+   git clone https://github.com/AlexNovickiy/next-js-rental-car-app.git
+   cd next-js-rental-car-app
+   ```
+
+2. Встановіть залежності (npm або yarn)
+   ```bash
+   npm install
+   # або
+   yarn install
+   ```
+
+Налаштування середовища
+-----------------------
+Створіть файл `.env.local` в корені проекту і додайте необхідні змінні середовища. Приклад:
 ```
+# Приклади змінних — замініть на ваші значення
+NEXT_PUBLIC_API_URL=https://api.example.com
+DATABASE_URL=postgresql://user:password@localhost:5432/dbname
+NEXTAUTH_SECRET=your-secret
+```
+Змінні залежать від того, як у вас реалізовано бекенд та автентифікацію. Оновіть їх відповідно до вашого середовища.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Запуск локально
+---------------
+- Розробка (горячий перезапуск):
+  ```bash
+  npm run dev
+  # або
+  yarn dev
+  ```
+  Відкрийте http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Побудова та запуск у production режимі:
+  ```bash
+  npm run build
+  npm start
+  # або
+  yarn build
+  yarn start
+  ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Тестування
+---------
+Якщо у проекті додані тести, запустіть їх командою:
+```bash
+npm test
+# або
+yarn test
+```
+(Додайте/налаштуйте тестову конфігурацію залежно від використовуваних інструментів: Jest, React Testing Library тощо.)
 
-## Learn More
+Розгортання
+----------
+Проєкт можна розгорнути на платформах, що підтримують Next.js (Vercel, Netlify з Next.js адаптером, Docker, власний сервер). Для Vercel просто підключіть репозиторій — Vercel автоматично побудує та розгорне ваш додаток.
 
-To learn more about Next.js, take a look at the following resources:
+Внесок
+-----
+Вітайте внески! Щоб зробити внесок:
+1. Форкніть репозиторій
+2. Створіть гілку feature/name або fix/name
+3. Внесіть зміни та зробіть коміт
+4. Відправте Pull Request
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Будь ласка, дотримуйтеся загальних практик кодування і опишіть зміни в описі PR.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Ліцензія
+--------
+![License](https://img.shields.io/badge/license-MIT-blue)
 
-## Deploy on Vercel
+Автор
+-----
+Novytskyi Alexander  
+GitHub: https://github.com/AlexNovickiy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Контакт
+-------
+Якщо потрібна допомога або є запитання — відкривайте issue в репозиторії або пишіть через профіль GitHub.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

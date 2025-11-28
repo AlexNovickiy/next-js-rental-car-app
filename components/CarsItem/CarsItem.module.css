@@ -80,6 +80,7 @@
   width: 230px;
   max-height: 40px;
   overflow: hidden;
+  align-items: center;
 }
 
 .carDetailsItem {
@@ -94,7 +95,7 @@
   display: inline-block;
   width: 1px;
   height: 16px;
-  background-color: var(--gray);
+  background-color: var(--gray-light);
   margin-left: 6px;
   vertical-align: middle;
 }

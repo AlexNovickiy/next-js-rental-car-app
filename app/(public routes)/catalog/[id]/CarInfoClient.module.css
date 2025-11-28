@@ -388,36 +388,92 @@
   width: 100%;
 }
 
+.formGroup :global(.react-datepicker__month-container) {
+  width: 276px;
+}
+
 .formGroup :global(.react-datepicker) {
   font-family: inherit;
-  border: 1px solid #dadde1;
+  border: 1px solid var(--button);
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .formGroup :global(.react-datepicker__header) {
-  background-color: var(--button);
+  background-color: var(--white);
   border-bottom: none;
+  width: 252px;
+  margin: 0 auto;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   padding-top: 12px;
+  display: flex;
+  padding-bottom: 0;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .formGroup :global(.react-datepicker__current-month),
 .formGroup :global(.react-datepicker__day-name) {
-  color: var(--white);
-  font-weight: 500;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.formGroup :global(.react-datepicker__current-month) {
+  font-size: 16px;
+}
+
+.formGroup :global(.react-datepicker__month) {
+  margin: 0;
+  padding: 12px;
+}
+
+.formGroup :global(.react-datepicker__day-names) {
+  border-bottom: 1px solid var(--button);
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.formGroup :global(.react-datepicker__day-name) {
+  text-align: center;
+  color: var(--gray);
+  font-size: 12px;
+  margin: 0;
+}
+
+.formGroup :global(.react-datepicker__week) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  row-gap: 4px;
 }
 
 .formGroup :global(.react-datepicker__day) {
+  font-family: 'Inter', sans-serif;
   color: var(--main);
-  border-radius: 8px;
+  border-radius: 32px;
   transition: all 0.2s ease;
+  width: 36px;
+  height: 32px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formGroup :global(.react-datepicker__month) {
+  padding-top: 0;
 }
 
 .formGroup :global(.react-datepicker__day:hover) {
   background-color: var(--inputs);
   color: var(--main);
+  border-radius: 32px;
 }
 
 .formGroup :global(.react-datepicker__day--selected),
@@ -425,6 +481,10 @@
   background-color: var(--button);
   color: var(--white);
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .formGroup :global(.react-datepicker__day--disabled) {
@@ -436,16 +496,50 @@
   background-color: transparent;
 }
 
+.formGroup :global(.react-datepicker__day:not([aria-disabled='true']):hover) {
+  border-radius: 32px;
+  transition: all 0.2s ease;
+  width: 36px;
+  height: 32px;
+}
+
 .formGroup :global(.react-datepicker__navigation) {
   top: 12px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: none;
 }
 
-.formGroup :global(.react-datepicker__navigation-icon::before) {
-  border-color: var(--white);
+.formGroup :global(.react-datepicker__navigation-icon) {
+  display: none;
 }
 
-.formGroup :global(.react-datepicker__navigation:hover *::before) {
-  border-color: var(--white);
+.formGroup :global(.react-datepicker__navigation)::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--button);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.formGroup :global(.react-datepicker__navigation--previous)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M15 18L9 12L15 6' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M15 18L9 12L15 6' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.formGroup :global(.react-datepicker__navigation--next)::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M9 18L15 12L9 6' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M9 18L15 12L9 6' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 .formTextarea {
